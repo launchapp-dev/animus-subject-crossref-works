@@ -1,0 +1,69 @@
+schema = "animus.plugin.v1"
+name = "animus-subject-crossref-works"
+version = "0.1.0"
+plugin_kind = "subject_backend"
+description = "Crossref works subject backend plugin for Animus"
+protocol = "stdio"
+
+[binary]
+default = "animus-subject-crossref-works"
+
+[capabilities]
+streaming = false
+progress = false
+cancellation = false
+methods = [
+  "subject/list",
+  "subject/get",
+  "subject/schema",
+  "crossref.work/list",
+  "crossref.work/get",
+  "crossref.work/schema",
+  "health/check",
+]
+subject_kinds = ["crossref.work"]
+
+[[env]]
+key = "CROSSREF_QUERY"
+description = "Optional Crossref query parameter for works."
+required = false
+
+[[env]]
+key = "CROSSREF_FILTER"
+description = "Optional Crossref filter expression."
+required = false
+
+[[env]]
+key = "CROSSREF_SORT"
+description = "Optional Crossref sort field."
+required = false
+
+[[env]]
+key = "CROSSREF_ORDER"
+description = "Optional Crossref sort order, such as asc or desc."
+required = false
+
+[[env]]
+key = "CROSSREF_SELECT"
+description = "Optional comma-separated Crossref fields to return."
+required = false
+
+[[env]]
+key = "CROSSREF_API_URL"
+description = "Optional Crossref API base URL. Defaults to https://api.crossref.org."
+required = false
+
+[[env]]
+key = "CROSSREF_MAILTO"
+description = "Optional email address for Crossref polite pool."
+required = false
+
+[[env]]
+key = "CROSSREF_LOCAL_QUERY"
+description = "Optional local text query applied to works after fetch."
+required = false
+
+[[env]]
+key = "CROSSREF_LIMIT"
+description = "Optional maximum work count from 1 to 1000. Defaults to 50."
+required = false
